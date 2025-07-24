@@ -20,9 +20,17 @@ export default function SentimentAnalyzerPage() {
 
     setIsLoading(true);
     setSentimentResult(null);
-    
+
     try {
-      const response = await fetch('http://127.0.0.1:5000/analyze', {
+      // ===>>> This is the line you need to change <<<===
+      const apiUrl = process.env.NEXT_PUBLIC_SENTIMENT_BACKEND_API_URL;
+      
+      // Add a check to ensure the environment variable is loaded
+      if (!apiUrl) {
+        throw new Error("Sentiment API URL is not configured. Please check Vercel environment variables.");
+      }
+
+      const response = await fetch(`${apiUrl}/analyze`, { // Use the apiUrl variable here
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +47,7 @@ export default function SentimentAnalyzerPage() {
       const sentiment = data.sentiment;
 
       setSentimentResult(sentiment);
-      
+
     } catch (error) {
       console.error('Error analyzing sentiment:', error);
       setErrorMessage(`Error: ${error.message || 'Could not connect to AI backend.'}`);

@@ -72,8 +72,16 @@ export default function TicTacToePage() {
       const getAiMove = async () => {
         try {
           // --- Actual AI Backend Call ---
+          // FIX: Use the environment variable for the API URL
+          const ticTacToeApiUrl = process.env.NEXT_PUBLIC_TIC_TAC_TOE_API_URL;
+          
+          // Add a check to ensure the environment variable is loaded
+          if (!ticTacToeApiUrl) {
+              throw new Error("Tic Tac Toe API URL is not configured. Please check Vercel environment variables.");
+          }
+
           // Send the current board state to your Flask backend for the AI move.
-          const response = await fetch('http://127.0.0.1:5002/ai_move', { // IMPORTANT: Ensure this URL matches your Flask backend
+          const response = await fetch(`${ticTacToeApiUrl}/ai_move`, { // Use the apiUrl variable here
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ board: board, player: PLAYER_O }), // Send current board and AI's marker
@@ -112,10 +120,10 @@ export default function TicTacToePage() {
           } else if (bestMove === -1 && checkWinner(board) === 'Draw') {
               setWinner('Draw');
               setGameStatus("It's a Draw!");
-          } else {
+            } else {
               setErrorMessage("AI returned an invalid move or game is already over.");
               setGameStatus("Error in AI Turn.");
-          }
+            }
         } catch (error) {
           console.error("AI move error:", error);
           setErrorMessage(`AI Error: ${error.message || 'Could not get AI move.'}`);

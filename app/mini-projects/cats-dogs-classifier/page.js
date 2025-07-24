@@ -47,9 +47,16 @@ export default function CatsDogsClassifierPage() {
     formData.append('image', selectedImage); // Append the image file to form data
 
     try {
-      // IMPORTANT: This is the URL for your Python Flask backend for the image classifier.
-      // Ensure your Flask backend is running on http://127.0.0.1:5001
-      const response = await fetch('http://127.0.0.1:5001/classify', {
+      // ===>>> This is the line you need to change <<<===
+      const apiUrl = process.env.NEXT_PUBLIC_CATS_DOGS_API_URL;
+
+      // Add a check to ensure the environment variable is loaded
+      if (!apiUrl) {
+          throw new Error("Cats Dogs API URL is not configured. Please check Vercel environment variables.");
+      }
+
+      // Use the apiUrl variable here for the fetch request
+      const response = await fetch(`${apiUrl}/classify`, { // Changed from hardcoded 'http://127.0.0.1:5001'
         method: 'POST',
         body: formData, // Send form data directly (no 'Content-Type' header needed for FormData)
       });
@@ -82,7 +89,6 @@ export default function CatsDogsClassifierPage() {
       setIsLoading(false); // End loading
     }
   };
-
   return (
     <div className="page-container">
       {/* Back Button */}
