@@ -1,103 +1,173 @@
-import Image from "next/image";
+// app/page.js
+import Navbar from '../components/Navbar'; // Import the Navbar component
+import Link from 'next/link'; // Import Link
+import Image from 'next/image';
+import { projects } from '../lib/projects'; // Import your project data
+import MiniProjectsDisplaySection from '../components/MiniProjectsDisplaySection';
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="page-container">
+      <Navbar />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <section id="profile" className="hero-section">
+        <div className="hero-content">
+          <h2 className="hero-subtitle">INNOVATING WITH AI</h2>
+          <h1 className="hero-title">PORTFOLIO</h1>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+      </section>
+
+      <section className="about-me-section">
+        <div className="about-me-gradient-bg"></div> 
+        <div className="about-me-content">
+          <div className="profile-summary">
+            <div className="profile-image-container">
+              <img
+                src="/profile.png" 
+                alt="Audya's Profile"
+                className="profile-image"
+              />
+            </div>
+            <h2 className="profile-name">AUDYA FLORENCIA</h2>
+            <h3 className="profile-title">Computer Science Student Specializing in Artificial Intelligence</h3>
+            <p className="profile-bio">
+              A dedicated Computer Science student specializing in Artificial Intelligence, eager to apply theoretical knowledge and problem-solving skills to real-world challenges. Passionate about leveraging technology to innovate and contribute to dynamic teams. A quick learner with a strong foundation in computational principles and a keen interest in continuous growth within the tech industry.
+            </p>
+            <div className="contact-info">
+              <p>📍 Jakarta, Indonesia</p>
+              <p>📧 audyaflorenciaa@gmail.com</p>
+              <p>📱 <a href="https://wa.me/6289637318865">+62 896 3731 8865</a></p>
+              <p>🔗 <a href="https://www.linkedin.com/in/audya-florencia-4099bb271" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></p>
+              <p>🐙 <a href="https://github.com/audyaflorenciaa" target="_blank" rel="noopener noreferrer">GitHub Profile</a></p> 
+              <p>📄 <a href="/CV_AudyaFlorencia_with_portfolio.pdf" target="_blank" rel="noopener noreferrer">Download Resume</a></p>
+            </div>
+          </div>
+
+          <div className="details-grid">
+            <div className="detail-card">
+              <h4>EDUCATION</h4>
+              <ul>
+                <li>
+                  <strong>2023-2027</strong> - Bachelor of Computer Science (AI Major) <br />
+                  Bina Nusantara University - Tangerang Selatan, Indonesia
+                </li>
+              </ul>
+            </div>
+            <div className="detail-card">
+              <h4>WORK EXPERIENCE</h4>
+              <p className="job-title-experience">
+                <strong>Programmer Intern</strong> at PT. FITURE TEKNOLOGI INDONESIA
+              </p>
+              <ul>
+                <li>Contributed to the enhancement of the company's project management system by implementing improvements using Laravel and PHP technologies.</li>
+                <li>Actively engaged in learning and applying fundamental programming algorithms to optimize code efficiency.</li>
+                <li>Gained practical experience and a solid understanding of Object-Oriented Programming (OOP) concepts through hands-on development tasks.</li>
+              </ul>
+            </div>
+            <div className="detail-card">
+              <h4>SKILLSET</h4>
+              <div className="skills-list-horizontal"> 
+                <span className="skill-tag">Python, Javascript, C++</span>
+                <span className="skill-tag">Software Development</span>
+                <span className="skill-tag">Machine Learning</span>
+                <span className="skill-tag">Data Preprocessing</span>
+                <span className="skill-tag">Deep Learning</span>
+                <span className="skill-tag">Next.js/React</span>
+                <span className="skill-tag">Laravel</span>
+                <span className="skill-tag">Data Analysis</span>
+                <span className="skill-tag">Model Training</span>
+                <span className="skill-tag">TensorFlow</span> {/* Example of adding more */}
+                <span className="skill-tag">PyTorch</span>
+                <span className="skill-tag">NLP</span>
+                <span className="skill-tag">Git</span>
+                <span className="skill-tag">Scikit-learn</span>
+                <span className="skill-tag">Numpy</span>
+                <span className="skill-tag">Pandas</span>
+                <span className="skill-tag">Computer Vision</span>
+                {/* Add more skills as individual <span> elements */}
+              </div>
+            </div>
+            <div className="detail-card">
+              <h4>LANGUAGES</h4>
+              <span className="skill-tag">English</span>
+              <span className="skill-tag">Indonesian</span>
+            </div>
+            <div className="detail-card">
+              <h4>SOFT SKILLS</h4>
+              <ul>
+                <li>Problem Solving</li>
+                <li>Communication</li>
+                <li>Teamwork</li>
+                <li>Adaptability/Flexibility</li>
+                <li>Time Management</li>
+                <li>Continuous Learning</li>
+                <li>Innovative</li>
+              </ul>
+            </div>
+            <div className="detail-card">
+              <h4>MY PASSIONS</h4>
+              <div className="passions-icons">
+                {/* Placeholder icons - replace with actual SVGs or Font Awesome if desired */}
+                <div className="passion-icon">💡 AI Innovation and Research</div>
+                <div className="passion-icon">✍️ Building Intelligent System</div>
+                <div className="passion-icon">🧩 Solving Complex Problems with AI</div>
+                <div className="passion-icon">🤖 Exploring Machine Learning / Deep Learning</div>
+                <div className="passion-icon">🔎 Learning and Discovery</div>
+                <div className="passion-icon">🏔️ Exploring Nature</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" className="projects-display-section">
+        <div className="whats-inside-label">WHAT'S INSIDE?</div>
+        <div className="project-grid">
+          {projects.map((project) => (
+            <Link href={`/projects/${project.id}`} key={project.id} className="project-card-link">
+              <div className="project-card">
+                <span className="project-number">{project.number}</span>
+                <h3 className="project-title">{project.title}</h3>
+                <p className="project-short-description">{project.shortDescription}</p>
+
+                {/* Conditional Image Placeholder: 
+                    Only renders if project.imagePath exists 
+                    AND displayCardImage is not explicitly set to false */}
+                {project.imagePath && (project.displayCardImage === undefined || project.displayCardImage === true) && (
+                  <div className="project-image-placeholder">
+                    <img src={project.imagePath} alt={`${project.title} Screenshot`} />
+                  </div>
+                )}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section id="ask-pico" className="pico-homepage-placeholder-section">
+        <div className="pico-placeholder-content"> {/* This will be our main flex container */}
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src="/pico.png" // Assuming this is the correct path
+            alt="Pico Chatbot Character"
+            width={400} // Make Pico huge
+            height={400} // Maintain aspect ratio
+            className="pico-placeholder-img"
+            priority
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          
+          {/* NEW: This div will hold all your text and the button */}
+          <div className="pico-text-content">
+            <h2>Ask Pico!</h2>
+            <p>Your friendly AI assistant is ready to answer questions about Audya and her projects.</p>
+            <Link href="/ask-pico/chat" className="pico-placeholder-button">
+              Chat with Pico now!
+            </Link>
+          </div>
+          
+        </div>
+      </section>
+
+      <MiniProjectsDisplaySection />
     </div>
   );
 }

@@ -1,26 +1,1025 @@
-@import "tailwindcss";
+/* app/globals.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-bg: #1a1a1a;
+  --secondary-bg: #2a2a2a;
+  --text-color: #e0e0e0;
+  --accent-color-light: #f06292; /* Pinkish */
+  --accent-color-dark: #ad1457; /* Darker Pink */
+  --gradient-start: #8e2de2; /* Purple */
+  --gradient-end: #4a00e0;   /* Darker Purple */
+  --card-bg: #333;
+  --border-color: #555;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Navbar Styles */
+.navbar {
+  width: 100%;
+  background-color: var(--primary-bg);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-color-light);
+}
+
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar-item {
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-item:hover {
+  color: var(--accent-color-light);
+}
+
+/* Hero Section Styles */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 60vh; /* Adjust height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #4b00e0, #8e2de2, #f06292); /* Gradient from image */
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  border-bottom-left-radius: 50px; /* Rounded bottom corners */
+  border-bottom-right-radius: 50px;
+}
+
+.hero-content {
+  z-index: 1;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 5px;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.hero-title {
+  font-size: 5rem; /* Adjust for larger screens */
+  font-weight: 800;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.hero-year {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-left: 40px;
+  transform: rotate(-90deg); /* Rotate the year */
+  transform-origin: bottom left;
+  display: inline-block;
+}
+
+/* About Me Section Styles */
+.about-me-section {
+  position: relative;
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: -100px auto 50px auto; /* Pulls it up over the hero section */
+  background-color: var(--secondary-bg);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 500; /* Ensure it's above the hero section */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-me-gradient-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #4CAF50, #8BC34A); /* Greenish gradient */
+  opacity: 0.1; /* Subtle overlay */
+  border-radius: 20px;
+  z-index: -1;
+}
+
+.about-me-content {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 40px;
+  width: 100%;
+}
+
+.profile-summary {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image-container {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--accent-color-light);
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(240, 98, 146, 0.5);
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.profile-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--accent-color-light);
+  margin-bottom: 15px;
+}
+
+.profile-bio {
+  font-size: 0.95rem;
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  font-size: 0.9rem;
+  margin: 5px 0;
+  color: var(--text-color);
+}
+
+.details-grid {
+  flex: 2;
+  min-width: 600px; /* Adjust as needed */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.detail-card {
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.detail-card h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent-color-light);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.detail-card ul {
+  padding-left: 20px;
+}
+
+.detail-card ul li {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  list-style: disc; /* Use discs for lists */
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.skill-item span {
+  width: 100px; /* Fixed width for skill name */
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.skill-bar {
+  flex-grow: 1;
+  height: 8px;
+  background-color: #555;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-level {
+  height: 100%;
+  background: linear-gradient(to right, #f06292, #8e2de2);
+  border-radius: 4px;
+}
+
+/* Styling for horizontal skills list */
+.skills-list-horizontal { /* <--- Ensure this selector is correct */
+  display: flex;
+  flex-wrap: wrap; /* Allows skills to wrap to the next line if space runs out */
+  gap: 10px; /* Space between each skill tag */
+  justify-content: flex-start; /* Aligns items to the start of the line */
+}
+
+.skill-tag { /* <--- Ensure this selector is correct */
+  background-color: #444; /* Darker background for each tag */
+  padding: 8px 15px;
+  border-radius: 20px; /* Rounded corners for tag look */
+  font-size: 0.9rem;
+  color: #fff;
+  white-space: nowrap; /* Prevents text from breaking within a tag */
+}
+
+.passions-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.passion-icon {
+  background-color: #444;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+
+/* Projects Display Section Styles */
+.projects-display-section {
+  display: flex;
+  position: relative;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  gap: 20px;
+}
+
+.whats-inside-label {
+  writing-mode: vertical-lr; /* Vertical text */
+  text-orientation: mixed;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-color-light);
+  margin-right: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transform: rotate(180deg); /* Rotate to read bottom-up */
+}
+
+.project-grid {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Adjustments for project cards on homepage */
+.project-card-link { /* New class for the Link wrapper */
+    text-decoration: none; /* Remove underline from link */
+    color: inherit; /* Inherit text color */
+    display: block; /* Make the whole link block clickable */
+    height: 100%; /* Ensure link takes full height of grid item */
+}
+
+.project-card {
+  position: relative; /* Crucial for absolute positioning of children */
+  /* Remove flex-direction, justify-content, and margin-top: auto from here, as we're using absolute positioning */
+  /* Keep padding for overall inner spacing, but individual elements will be positioned */
+  padding: 20px; /* Overall internal padding */
+  border-radius: 15px;
+  overflow: hidden; /* Ensure content stays within card */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  min-height: 250px; /* Ensure cards have a consistent height */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Specific background colors for each project card (keep these as they are) */
+.project-card-link:nth-child(1) .project-card { background-color: #4CAF50; }
+.project-card-link:nth-child(2) .project-card { background-color: #2196F3; }
+.project-card-link:nth-child(3) .project-card { background-color: #FF9800; }
+.project-card-link:nth-child(4) .project-card { background-color: #9C27B0; }
+.project-card-link:nth-child(5) .project-card { background-color: #009688; }
+
+
+/* Project Number - Positioned at top-left */
+.project-number {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.4); /* Transparent for background effect */
+  z-index: 2; /* Ensure it's above the background, below title/desc */
+}
+
+/* Project Title - Centered */
+.project-title {
+  position: absolute; /* Position absolutely */
+  top: 50%; /* Start at 50% from top */
+  left: 50%; /* Start at 50% from left */
+  transform: translate(-50%, -50%); /* Pull back by half its width/height to truly center */
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  z-index: 3; /* Ensure it's on top */
+  text-transform: uppercase;
+  text-align: center; /* Center the text itself */
+  width: calc(100% - 40px); /* Take full width minus padding */
+  line-height: 1.2;
+}
+
+/* Short Description - Positioned at bottom-left */
+.project-short-description {
+  position: absolute; /* Position absolutely */
+  bottom: 20px; /* Distance from bottom */
+  left: 20px; /* Distance from left */
+  right: 20px; /* Distance from right */
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.4;
+  z-index: 3; /* Ensure it's on top */
+  text-align: left; /* Keep text left-aligned */
+  /* Optional: Add ellipsis for long descriptions */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  -webkit-box-orient: vertical;
+}
+
+/* Hide the image placeholder completely if its src is empty (keep this as is) */
+.project-image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  background-color: transparent;
+}
+
+.project-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* If you uncomment imagePath in lib/projects.js, you'd make this visible */
+.project-image-placeholder img[src]:not([src=""]) {
+  visibility: visible;
+  opacity: 1;
+}
+.project-detail-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--secondary-bg);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  color: var(--text-color);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--accent-color-light);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #fff;
+}
+
+.project-detail-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-color-light);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.project-detail-subtitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ccc;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.project-detail-image-container {
+  width: 100%;
+  height: 400px; /* Fixed height for consistency */
+  background-color: #555; /* Default background if image not loaded */
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #aaa;
+}
+
+.project-detail-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the area, cropping if necessary */
+  display: block;
+}
+
+.project-detail-image-placeholder {
+  width: 100%;
+  height: 400px; /* Fixed height for consistency */
+  background-color: #444; /* Darker placeholder */
+  border-radius: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #aaa;
+  text-align: center;
+}
+
+.project-detail-section {
+  margin-bottom: 30px;
+}
+
+.project-detail-section h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--accent-color-light);
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 5px;
+}
+
+.project-detail-section p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+
+.project-contributions-list {
+  list-style: disc;
+  margin-left: 25px;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.project-contributions-list li {
+  margin-bottom: 8px;
+}
+
+.project-detail-links {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+  justify-content: center;
+}
+
+.project-button {
+  display: inline-block;
+  background-color: var(--accent-color-dark);
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.project-button:hover {
+  background-color: var(--accent-color-light);
+  transform: translateY(-2px);
+}
+
+.project-not-found {
+  text-align: center;
+  font-size: 2rem;
+  color: #f06292;
+  margin-bottom: 30px;
+}
+
+/* Responsive adjustments for project detail page */
+@media (max-width: 768px) {
+  .project-detail-container {
+    padding: 20px;
+    margin: 20px auto;
+  }
+  .project-detail-title {
+    font-size: 2rem;
+  }
+  .project-detail-subtitle {
+    font-size: 1rem;
+  }
+  .project-detail-section h3 {
+    font-size: 1.5rem;
+  }
+  .project-detail-links {
+    flex-direction: column;
+    align-items: center;
+  }
+  .project-button {
+    width: 80%;
+    text-align: center;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Chatbot Section Styling */
+.chatbot-section {
+  max-width: 400px; /* Adjust width as needed */
+  margin: 50px auto;
+  padding: 20px;
+  background-color: var(--secondary-bg);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.pico-page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px;
+  background-color: #333333; /* Changed to #333333 as requested */
+  color: var(--text-color);
+  align-items: center;
+}
+
+.back-link-pico {
+  display: inline-block;
+  margin-bottom: 30px;
+  color: var(--accent-color-light);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  align-self: flex-start; /* Align to the left */
+  margin-left: max(20px, calc(50% - 600px)); /* Align with content wrapper */
+}
+
+.back-link-pico:hover {
+  color: #fff;
+}
+
+.pico-content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  width: 100%;
+  background-color: #333333; /* Wrapper itself is also black */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0); /* Remove box-shadow from wrapper */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  min-height: 600px; /* Give it some height for content */
+}
+
+.pico-image-section {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column; /* Changed to column to stack image and potential text */
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-color: transparent; /* NO BACKGROUND COLOR HERE */
+  box-shadow: none;
+  color: var(--text-color); /* Text color if any */
+  text-align: center;
+  position: relative;
+}
+
+.pico-character-img {
+  width: 350px; /* Larger Pico */
+  height: 350px; /* Larger Pico */
+  object-fit: contain;
+  border-radius: 0; /* No border radius, make it fully rectangular/original shape */
+  box-shadow: none; /* No shadow */
+  margin-bottom: 0; /* No margin bottom here */
+}
+.pico-start-chatting-section { /* New class for the right side */
+  flex: 1; /* Takes equal space as image section */
+  min-width: 300px;
+  background-color: transparent; /* No background color */
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center text vertically */
+  text-align: center;
+}
+
+.pico-page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px;
+  background-color: #000000; /* Pure black background for the entire page */
+  color: var(--text-color);
+  align-items: center;
+}
+
+.pico-content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  width: 100%;
+  background-color: #000000; /* Wrapper itself is also black */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0); /* Remove box-shadow from wrapper */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  min-height: 600px; /* Give it some height for content */
+}
+
+.pico-image-section {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column; /* Changed to column to stack image and potential text */
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-color: transparent; /* NO BACKGROUND COLOR HERE */
+  /* Remove gradient here: background: linear-gradient(135deg, #FFD700, #FFA500, #000000); */
+  color: var(--text-color); /* Text color if any */
+  text-align: center;
+  position: relative;
+}
+
+.pico-character-img {
+  width: 350px; /* Larger Pico */
+  height: 350px; /* Larger Pico */
+  object-fit: contain;
+  border-radius: 0; /* No border radius, make it fully rectangular/original shape */
+  box-shadow: none; /* No shadow */
+  margin-bottom: 0; /* No margin bottom here */
+}
+
+
+.pico-start-chatting-section { /* New class for the right side */
+  flex: 1; /* Takes equal space as image section */
+  min-width: 300px;
+  background-color: transparent; /* No background color */
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center text vertically */
+  text-align: center;
+}
+
+.pico-start-chatting-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff; /* White text for contrast on black */
+  margin-bottom: 15px;
+}
+
+.pico-start-chatting-section p {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.pico-start-chat-button {
+  display: inline-block;
+  background-color: var(--accent-color-light); /* Your accent pink */
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.pico-start-chat-button:hover {
+  background-color: var(--accent-color-dark);
+  transform: translateY(-2px);
+}
+
+.pico-greeting {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 20px;
+  color: #333; 
+}
+
+/* Responsive adjustments for Pico page */
+@media (max-width: 768px) {
+  .pico-content-wrapper {
+    flex-direction: column;
+  }
+  .pico-image-section, .pico-start-chatting-section { /* Changed class here */
+    min-width: unset;
+    width: 100%;
+  }
+  .pico-image-section {
+    padding-bottom: 0;
+  }
+  .pico-start-chatting-section { /* Changed class here */
+    padding-top: 0;
+  }
+}
+.pico-homepage-placeholder-section {
+  padding: 60px 20px;
+  text-align: center; /* This will be overridden by flex alignment below */
+  background-color: #1C1C1C; /* Using the exact color you requested */
+  color: var(--text-color);
+  border-radius: 15px;
+  max-width: 1000px;
+  margin: 50px auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  
+  /* Make this section a flex container to center its main content block */
+  display: flex;
+  justify-content: center; /* Center the entire pico-placeholder-content horizontally */
+  align-items: center; /* Center the entire pico-placeholder-content vertically */
+}
+
+.pico-placeholder-content {
+  display: flex; /* This now makes Pico and the text-content div go side-by-side */
+  flex-direction: row; /* Arranges children (Pico image and pico-text-content) in a row */
+  align-items: center; /* Vertically align Pico and the text block */
+  gap: 40px; /* Space between Pico image and the text content */
+  width: 100%; /* Take full width of parent section, within max-width */
+  max-width: 900px; /* Constrain the inner content width for readability */
+  justify-content: center; /* Center Pico and the text block if there's extra space */
+}
+
+.pico-placeholder-img {
+  width: 400px;
+  height: 400px; 
+  object-fit: contain;
+  border-radius: 0; 
+  box-shadow: none; 
+  flex-shrink: 0; 
+  animation: floatAndSway 5s ease-in-out infinite; 
+  transform-origin: center bottom; 
+}
+
+/* NEW: Styles for the div wrapping the text and button on the right */
+.pico-text-content {
+  display: flex;
+  flex-direction: column; /* Stack h2, p, and button vertically */
+  align-items: flex-start; /* Align these items to the left within their column */
+  text-align: left; /* Ensure text itself is left-aligned */
+  gap: 15px; /* Space between h2, p, and button */
+  flex-grow: 1; /* Allow this text block to grow and take up available space */
+}
+
+/* Ensure text elements within pico-text-content are left-aligned and have proper margins */
+.pico-text-content h2 { /* Targeting h2 specifically within pico-text-content */
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0; /* Use gap from parent pico-text-content */
+}
+
+.pico-text-content p { /* Targeting p specifically within pico-text-content */
+  font-size: 1.1rem;
+  margin-bottom: 0; /* Use gap from parent pico-text-content */
+  max-width: 600px;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.pico-placeholder-button {
+  display: inline-block;
+  background-color: #FFD700; /* Changed to Pico's yellow */
+  color: #333; /* Dark text for contrast on yellow background */
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.pico-placeholder-button:hover {
+  background-color: #FFA500; /* Slightly darker orange-yellow on hover */
+  transform: translateY(-2px);
+}
+
+
+@keyframes floatAndSway {
+  0% { transform: translateY(0) rotate(2deg); }
+  50% { transform: translateY(-15px) rotate(-2deg); } 
+  100% { transform: translateY(0) rotate(2deg); }
+}
+
+/* Responsive adjustment for the Pico section */
+@media (max-width: 768px) {
+  .pico-placeholder-content { /* This is the main flex container that will now stack */
+    flex-direction: column; /* Stack image and text vertically on small screens */
+    gap: 30px;
+  }
+  .pico-placeholder-img {
+    width: 200px; /* Adjust size for mobile */
+    height: 200px;
+  }
+  .pico-text-content { /* Center text content when stacked vertically */
+    align-items: center;
+    text-align: center;
+  }
+  .pico-text-content h2,
+  .pico-text-content p,
+  .pico-placeholder-button {
+    text-align: center; /* Center text and button when stacked */
+  }
+}
+
+/* Ensure general page container doesn't interfere with pico page */
+.page-container {
+    /* Ensure this doesn't have fixed height that conflicts */
+    min-height: 100vh; /* Make sure it takes full viewport height */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 4rem;
+  }
+  .hero-year {
+    font-size: 1.8rem;
+  }
+  .about-me-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-summary, .details-grid {
+    min-width: unset;
+    width: 100%;
+  }
+  .projects-display-section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .whats-inside-label {
+    writing-mode: horizontal-tb;
+    text-orientation: unset;
+    transform: none;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    gap: 1rem;
+  }
+  .hero-title {
+    font-size: 3rem;
+  }
+  .hero-year {
+    font-size: 1.5rem;
+  }
+  .details-grid {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+  }
+  .skill-item span {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .navbar-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+  .navbar-item {
+    font-size: 0.9rem;
+  }
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-year {
+    font-size: 1.2rem;
+    margin-left: 10px;
+  }
+  .about-me-section {
+    margin: -50px auto 30px auto;
+    padding: 30px 15px;
+  }
+  .profile-name {
+    font-size: 1.8rem;
+  }
+  .profile-title {
+    font-size: 1rem;
+  }
+  .detail-card {
+    padding: 15px;
+  }
+  .detail-card h4 {
+    font-size: 1rem;
+  }
+  .detail-card ul li {
+    font-size: 0.85rem;
+  }
+  .project-number {
+    font-size: 1.8rem;
+  }
+  .project-title {
+    font-size: 1rem;
+  }
 }
