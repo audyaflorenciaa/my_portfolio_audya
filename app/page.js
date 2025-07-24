@@ -59,7 +59,7 @@ export default function Home() {
                 <strong>Programmer Intern</strong> at PT. FITURE TEKNOLOGI INDONESIA
               </p>
               <ul>
-                <li>Contributed to the enhancement of the company's project management system by implementing improvements using Laravel and PHP technologies.</li>
+                <li>Contributed to the enhancement of the company&apos;s project management system by implementing improvements using Laravel and PHP technologies.</li>
                 <li>Actively engaged in learning and applying fundamental programming algorithms to optimize code efficiency.</li>
                 <li>Gained practical experience and a solid understanding of Object-Oriented Programming (OOP) concepts through hands-on development tasks.</li>
               </ul>
@@ -121,7 +121,7 @@ export default function Home() {
       </section>
 
       <section id="projects" className="projects-display-section">
-        <div className="whats-inside-label">WHAT'S INSIDE?</div>
+        <div className="whats-inside-label">WHAT&apos;S INSIDE?</div>
         <div className="project-grid">
           {projects.map((project) => (
             <Link href={`/projects/${project.id}`} key={project.id} className="project-card-link">

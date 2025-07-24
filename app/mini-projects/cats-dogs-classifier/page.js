@@ -125,7 +125,7 @@ export default function CatsDogsClassifierPage() {
         <div className="main-card">
           <h1 className="title">Cats vs. Dogs Classifier</h1>
           <p className="description">
-            Upload an image, and my AI will tell you if it's a cat or a dog!
+            Upload an image, and my AI will tell you if it&apos;s a cat or a dog!
           </p>
 
           <div className="input-area">
@@ -158,7 +158,7 @@ export default function CatsDogsClassifierPage() {
           {predictionResult && (
             <div className="prediction-result-card">
               <h2 className="prediction-label">
-                It's a <span className="predicted-class-name">{predictionResult.class}!</span>
+                It&apos;s a <span className="predicted-class-name">{predictionResult.class}!</span>
               </h2>
               <p className="confidence">
                 Confidence: {predictionResult.confidence ? (predictionResult.confidence * 100).toFixed(2) : 'N/A'}%

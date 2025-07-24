@@ -136,7 +136,7 @@ export default function SentimentAnalyzerPage() {
                 </h3>
                 {sentimentResult === sentimentType.type && (
                   <p className="analyzed-text">
-                    "{inputText}"
+                    &quot;{inputText}&quot;
                   </p>
                 )}
               </div>

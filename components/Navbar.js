@@ -6,7 +6,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <Link href="/#profile" className="navbar-brand"> {/* Brand also links to profile top */}
-          Audya's Portfolio
+          Audya&apos;s Portfolio
         </Link>
         <ul className="navbar-links">
           <li>
