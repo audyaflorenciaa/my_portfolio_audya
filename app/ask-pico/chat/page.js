@@ -56,7 +56,7 @@ export default function AIHomePage() {
   const [inputValue, setInputValue] = useState('');
   // Initialize messages with the first bot message
   const [messages, setMessages] = useState([
-    { sender: 'bot', text: "Hi there! I'm Pico, Audya's personal chatbot. Ask me anything about her portfolio or projects!" }
+    { sender: 'bot', text: "Hi there! I'm Pico, Audya's personal chatbot. Ask me anything about her portfolio!" }
   ]);
   const messagesEndRef = useRef(null); // Ref for auto-scrolling
 
